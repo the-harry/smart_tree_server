@@ -13,13 +13,15 @@ services:
       - influxdb-storage:/var/lib/influxdb
     environment:
       - INFLUXDB_DB=db0
-      - INFLUXDB_ADMIN_USER=${INFLUXDB_USERNAME}
-      - INFLUXDB_ADMIN_PASSWORD=${INFLUXDB_PASSWORD}
+      - INFLUXDB_ADMIN_USER=monitoring
+      - INFLUXDB_ADMIN_PASSWORD=monitoring
     networks:
       - backend
 
   grafana:
-    image: grafana/grafana:6.2.5
+    build:
+      context: .
+      dockerfile: Dockerfile-grafana
     ports:
       - 3000:3000
     volumes:
@@ -28,8 +30,8 @@ services:
     depends_on:
       - influx
     environment:
-      - GF_SECURITY_ADMIN_USER=${GRAFANA_USERNAME}
-      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD}
+      - GF_SECURITY_ADMIN_USER=monitoring
+      - GF_SECURITY_ADMIN_PASSWORD=monitoring
     networks:
       - backend
 
