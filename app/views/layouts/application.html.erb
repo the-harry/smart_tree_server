@@ -21,14 +21,17 @@
         <li class="nav-item active">
           <%= link_to 'Mapeamento', root_path, class: 'nav-link' %>
         </li>
+        <li class="nav-item active">
+          <%= link_to 'Criar jardim', new_garden_path, class: 'nav-link' %>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            QRcode
+            Árvores
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to 'Registrar', root_path, class: 'dropdown-item' %>
+            <%= link_to 'Registrar', new_tree_path, class: 'dropdown-item' %>
             <div class="dropdown-divider"></div>
-            <%= link_to 'Consultar', root_path, class: 'dropdown-item' %>
+            <%= link_to 'Consultar', trees_path, class: 'dropdown-item' %>
           </div>
         </li>
       </ul>
