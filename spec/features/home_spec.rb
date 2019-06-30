@@ -29,9 +29,9 @@ feature 'User navigate' do
     fill_in 'Longitude', with: '46.7118649'
     click_on 'Cadastrar'
 
-    expect(page).to have_css('td', text: 'se_worker_01')
-    expect(page).to have_css('td', text: '-23.6859718')
-    expect(page).to have_css('td', text: '46.7118649')
+    expect(page).to have_css('p', text: 'se_worker_01')
+    expect(page).to have_css('p', text: '-23.6859718')
+    expect(page).to have_css('p', text: '46.7118649')
   end
 
   scenario 'User view garden details' do

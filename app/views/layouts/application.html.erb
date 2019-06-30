@@ -23,7 +23,9 @@
             Jardins
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to 'Criar jardim', new_garden_path, class: 'dropdown-item' %>
+            <%= link_to 'Consultar', search_garden_path, class: 'dropdown-item' %>
+            <div class="dropdown-divider"></div>
+            <%= link_to 'Registrar', new_garden_path, class: 'dropdown-item' %>
             <div class="dropdown-divider"></div>
             <%= link_to 'Ver jardins', gardens_path, class: 'dropdown-item' %>
           </div>
@@ -34,9 +36,9 @@
             Árvores
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to 'Registrar', new_tree_path, class: 'dropdown-item' %>
-            <div class="dropdown-divider"></div>
             <%= link_to 'Consultar', trees_path, class: 'dropdown-item' %>
+            <div class="dropdown-divider"></div>
+            <%= link_to 'Registrar', new_tree_path, class: 'dropdown-item' %>
           </div>
         </li>
 
