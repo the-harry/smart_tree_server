@@ -1,0 +1,44 @@
+<% javascript_include_tag 'instascan.min.js' %>
+
+<h1>Registrar nova póda.</h1>
+<h3>Antes de preencher o formulário identifique a árvore</h3>
+<h3>Assim que a árvore for detectada aparecerá uma notificação</h3>
+
+<video id="preview"></video>
+<h1 id="qrnotice"></h1>
+
+<%= form_with model: @prune, local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :prune_type, 'Tipo de póda' %>
+    <%= f.text_field :prune_type, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :notes, 'Anotações' %>
+    <%= f.text_area :notes, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.hidden_field :param %>
+  </div>
+  <%= f.submit 'Cadastrar', class: 'btn btn-warning' %>
+<% end %>
+
+<script type="text/javascript">
+  let input = document.getElementById("prune_param");
+  let qrnotice = document.getElementById("qrnotice");
+  let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+  scanner.addListener('scan', function (content) {
+    input.value = content.toString(2);
+    qrnotice.innerHTML = "QR code detectado!";
+    console.log(content.toString(2));
+  });
+  Instascan.Camera.getCameras().then(function (cameras) {
+    if (cameras.length > 0) {
+      scanner.start(cameras[0]);
+    } else {
+      qrnotice.innerHTML = "Nenhuma câmera detectada!";
+    }
+  }).catch(function (e) {
+    qrnotice.innerHTML = e;
+    console.error(e);
+  });
+</script>

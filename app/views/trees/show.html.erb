@@ -22,5 +22,15 @@
 <h3>QR CODE</h3>
 <%= image_tag("https://chart.googleapis.com/chart?cht=qr&chs=177x177&chl=#{@qr}") %>
 
+<h3>Últimas pódas</h3>
+<% @tree.prunes.each do |prune| %>
+  <h4>Data da póda</h4>
+  <p><%= prune.created_at %></p>
+  <h4>Tipo de póda</h4>
+  <p><%= prune.prune_type %></p>
+  <h4>Anotações</h4>
+  <p><%= prune.notes %></p>
+  <br><hr><br>
+<% end %>
 
 <h3>Informações de monitoramento</h3>

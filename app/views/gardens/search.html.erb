@@ -5,7 +5,7 @@
 <h1 id="qrnotice"></h1>
 <%= form_with model: @garden, local: true do |f| %>
   <%= f.hidden_field :param %>
-  <%= f.submit 'Consultar' %>
+  <%= f.submit 'Consultar', class: 'btn btn-warning' %>
 <% end %>
 
 

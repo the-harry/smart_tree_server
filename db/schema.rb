@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_30_015850) do
+ActiveRecord::Schema.define(version: 2019_06_30_211747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,8 +24,7 @@ ActiveRecord::Schema.define(version: 2019_06_30_015850) do
   end
 
   create_table "prunes", force: :cascade do |t|
-    t.string "type"
-    t.datetime "last_prune"
+    t.string "prune_type"
     t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
