@@ -1,16 +1,17 @@
 class GardensController < ApplicationController
   def new
-    @garden = Garden.new(garden_params)
+    @garden = Garden.new
   end
 
   def create
-    @garden = Garden.new
-    if @garden.save!
+    @garden = Garden.new(garden_params)
+    if @garden.valid? && @garden.save!
       flash[:notice] = 'Jardim criado com sucesso!'
+      redirect_to garden_path
     else
       flash[:notice] = 'Erro ao criar jardim!'
+      redirect_to new_garden_path
     end
-    redirect_to @garden
   end
 
   def show
