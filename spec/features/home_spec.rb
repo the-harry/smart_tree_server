@@ -34,4 +34,16 @@ feature 'User navigate' do
     expect(page).to have_css('td', text: '46.7118649')
   end
 
+  scenario 'User view garden details' do
+    garden = Garden.create(host: 'test', latitude: '46.7118649',
+                           longitude: '46.7118649')
+
+    visit gardens_path
+    click_on 'Ver detalhes'
+
+    expect(page).to have_css('p', text: garden.host)
+    expect(page).to have_css('img')
+    expect(page).to have_css('p', text: garden.latitude)
+    expect(page).to have_css('p', text: garden.longitude)
+  end
 end

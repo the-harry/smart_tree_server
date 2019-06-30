@@ -7,7 +7,7 @@ class GardensController < ApplicationController
     @garden = Garden.new(garden_params)
     if @garden.valid? && @garden.save!
       flash[:notice] = 'Jardim criado com sucesso!'
-      redirect_to gardens_path
+      redirect_to show_garden_path_url(@garden.id)
     else
       flash[:notice] = 'Erro ao criar jardim!'
       redirect_to new_garden_path
@@ -16,6 +16,11 @@ class GardensController < ApplicationController
 
   def all
     @garden = Garden.all
+  end
+
+  def show
+    # gerar qrcode
+    @garden = Garden.find(params[:id])
   end
 
   private

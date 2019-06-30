@@ -13,7 +13,7 @@
         <td><%= g.host %></td>
         <td><%= g.latitude %></td>
         <td><%= g.longitude %></td>
-        <td>Link medições</td>
+        <td><%= link_to 'Ver detalhes', show_garden_path_url(g.id ) %></td>
       </tr>
     <% end %>
   </tbody>
