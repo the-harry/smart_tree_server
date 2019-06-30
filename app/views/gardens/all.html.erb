@@ -1,0 +1,20 @@
+<table border="1">
+  <thead>
+    <tr>
+      <th>host</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Medições</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @garden.each do |g| %>
+      <tr>
+        <td><%= g.host %></td>
+        <td><%= g.latitude %></td>
+        <td><%= g.longitude %></td>
+        <td>Link medições</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

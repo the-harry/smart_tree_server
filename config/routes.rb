@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: 'home#index'
 
-  resource :garden, only: %i[show]
+  get '/gardens', to: 'gardens#all'
   resources :gardens, only: %i[new create]
   resource :trees, only: %i[show]
   resources :trees, only: %i[new create]
