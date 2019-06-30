@@ -1,0 +1,26 @@
+<h1>Detalhes da árvore</h1>
+
+<h3>Registro</h3>
+<p><%= @tree.register %></p>
+<h3>host</h3>
+<p><%= @tree.popular_name %></p>
+<h3>host</h3>
+<p><%= @tree.scientific_name %></p>
+<h3>host</h3>
+<p><%= @tree.origin %></p>
+<h3>host</h3>
+<p><%= @tree.near_age %></p>
+<h3>host</h3>
+<pre><%= @tree.extra_info %></pre>
+<h3>Jardim</h3>
+<p><%= @tree.garden.host %></p>
+<h3>Latitude</h3>
+<p><%= @tree.latitude %></p>
+<h3>Longitude</h3>
+<p><%= @tree.longitude %></p>
+
+<h3>QR CODE</h3>
+<%= image_tag("https://chart.googleapis.com/chart?cht=qr&chs=177x177&chl=#{@qr}") %>
+
+
+<h3>Informações de monitoramento</h3>

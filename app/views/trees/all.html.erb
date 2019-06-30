@@ -1,0 +1,20 @@
+<table border="1">
+  <thead>
+    <tr>
+      <th>Registro</th>
+      <th>Nome popular</th>
+      <th>Nome Científico</th>
+      <th>Detalhes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @trees.each do |t| %>
+      <tr>
+        <td><%= t.register %></td>
+        <td><%= t.popular_name %></td>
+        <td><%= t.scientific_name %></td>
+        <td><%= link_to 'Ver detalhes', show_tree_path_url(t.id ) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

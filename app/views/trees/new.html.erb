@@ -1,0 +1,59 @@
+<%= form_with model: @tree, local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :register, 'Número de registro' %>
+    <%= f.text_field :register, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :popular_name, 'Nome popular' %>
+    <%= f.text_field :popular_name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :scientific_name, 'Nome científico' %>
+    <%= f.text_field :scientific_name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :origin, 'Origem' %>
+    <%= f.text_field :origin, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :near_age, 'Idade aproximada' %>
+    <%= f.text_field :near_age, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :extra_info, 'Informações extras' %>
+    <%= f.text_area :extra_info, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :garden_id, 'Jardim' %>
+    <%= f.collection_select :garden_id, @garden, :id, :host,
+                          {}, class: 'form-control col-md-6' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :latitude, 'Latitude' %>
+    <%= f.text_field :latitude, class: 'form-control' %>
+    <%= f.label :longitude, 'Longitude' %>
+    <%= f.text_field :longitude, class: 'form-control' %>
+  </div>
+  <%= f.submit 'Cadastrar', class: 'btn btn-warning' %>
+<% end %>
+
+<%= button_tag "Carregar coordenadas", onclick: "getLocation()", class: 'btn btn-success' %>
+
+<script>
+  var lat = document.getElementById("tree_latitude");
+  var lon = document.getElementById("tree_longitude");
+
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      lat.value = "Navegador não suportado.";
+      lon.value = "Navegador não suportado.";
+    }
+  }
+
+  function showPosition(position) {
+    lat.value = position.coords.latitude;
+    lon.value =  position.coords.longitude;
+  }
+</script>
