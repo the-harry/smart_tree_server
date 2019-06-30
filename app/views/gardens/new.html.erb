@@ -1,0 +1,34 @@
+<%= form_with model: @garden, local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :host, 'Nome do host' %>
+    <%= f.text_field :host, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :latitude, 'Latitude' %>
+    <%= f.text_field :latitude, class: 'form-control' %>
+    <%= f.label :longitude, 'Longitude' %>
+    <%= f.text_field :longitude, class: 'form-control' %>
+  </div>
+  <%= f.submit 'Cadastrar', class: 'btn btn-warning' %>
+<% end %>
+
+<%= button_tag "Carregar coordenadas", onclick: "getLocation()", class: 'btn btn-default' %>
+
+<script>
+  var lat = document.getElementById("garden_latitude");
+  var lon = document.getElementById("garden_longitude");
+
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      lat.value = "Navegador não suportado.";
+      lon.value = "Navegador não suportado.";
+    }
+  }
+
+  function showPosition(position) {
+    lat.value = position.coords.latitude;
+    lon.value =  position.coords.longitude;
+  }
+</script>
