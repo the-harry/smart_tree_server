@@ -1,3 +1,3 @@
 FROM grafana/grafana:6.2.5
 
-RUN grafana-cli plugins install grafana-worldmap-panel
+ADD ./grafana/* /var/lib/grafana/plugins/.
