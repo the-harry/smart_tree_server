@@ -10,5 +10,29 @@
 <h3>QR CODE</h3>
 <%= image_tag("https://chart.googleapis.com/chart?cht=qr&chs=177x177&chl=#{@qr}") %>
 
-
+<hr>
 <h3>Informações de monitoramento</h3>
+
+
+<hr>
+<h3>Árvores do jardim</h3>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Registro</th>
+      <th>Nome popular</th>
+      <th>Nome Científico</th>
+      <th>Detalhes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @garden.trees.each do |t| %>
+      <tr>
+        <td><%= t.register %></td>
+        <td><%= t.popular_name %></td>
+        <td><%= t.scientific_name %></td>
+        <td><%= link_to 'Ver detalhes', show_tree_path_url(t.id ) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
