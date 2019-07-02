@@ -9,7 +9,6 @@
 * Grafana 6.2.5
 * Docker
 * Docker compose
-* Kubernetes [futuro]
 
 ### Sobre o projeto
 
@@ -37,6 +36,8 @@ As informações cadastrais serão fechadas ao público, porém haverá um endpo
 * `cd smart_tree_server`
 * Para iniciar
 * `docker-compose build && docker-compose up`
+* Reinicie o container do grafana para carregar o plugin wordmap
+* `docker-compose restart grafana`
 * Abra outro terminal para acessar o container e digite o comando
 * `docker-compose exec web bash`
 * `bin/setup`
