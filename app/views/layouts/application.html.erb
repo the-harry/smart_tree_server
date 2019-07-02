@@ -18,50 +18,41 @@
 
     <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Jardins
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to 'Consultar', search_garden_path, class: 'dropdown-item' %>
-            <div class="dropdown-divider"></div>
-            <%= link_to 'Registrar', new_garden_path, class: 'dropdown-item' %>
-            <div class="dropdown-divider"></div>
-            <%= link_to 'Ver jardins', gardens_path, class: 'dropdown-item' %>
-          </div>
+        <li class="nav-item active">
+          <%= link_to 'Consultar', search_path, class: 'nav-link' %>
         </li>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Árvores
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to 'Consultar', search_tree_path, class: 'dropdown-item' %>
-            <div class="dropdown-divider"></div>
-            <%= link_to 'Registrar', new_tree_path, class: 'dropdown-item' %>
-            <div class="dropdown-divider"></div>
-            <%= link_to 'Ver árvores', trees_path, class: 'dropdown-item' %>
-          </div>
-        </li>
-
         <li class="nav-item active">
           <%= link_to 'Mapeamento', root_path, class: 'nav-link' %>
         </li>
         <li class="nav-item active">
           <%= link_to 'Cadastrar poda', new_prune_path, class: 'nav-link' %>
         </li>
-
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Jardins
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to 'Registrar', new_garden_path, class: 'dropdown-item' %>
+            <div class="dropdown-divider"></div>
+            <%= link_to 'Ver jardins', gardens_path, class: 'dropdown-item' %>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Árvores
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to 'Registrar', new_tree_path, class: 'dropdown-item' %>
+            <div class="dropdown-divider"></div>
+            <%= link_to 'Ver árvores', trees_path, class: 'dropdown-item' %>
+          </div>
+        </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
-        <button class="btn btn-warning my-2 my-sm-0" type="submit">Pesquisar</button>
-      </form>
     </div>
   </nav>
   <% if flash[:notice] %>
     <div class="notice"><%= flash[:notice] %></div>
   <% end %>
-
   <%= yield %>
   </body>
 </html>

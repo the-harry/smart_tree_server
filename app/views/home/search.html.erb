@@ -1,22 +1,13 @@
 <% javascript_include_tag 'instascan.min.js' %>
-<h3>Clique em consultar ao aparecer a notificação</h3>
-
 <video id="preview"></video>
 <h1 id="qrnotice"></h1>
-<%= form_with model: @garden, local: true do |f| %>
-  <%= f.hidden_field :param %>
-  <%= f.submit 'Consultar', class: 'btn btn-warning' %>
-<% end %>
-
 
 <script type="text/javascript">
   let input = document.getElementById("param");
   let qrnotice = document.getElementById("qrnotice");
   let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
   scanner.addListener('scan', function (content) {
-    input.value = content.toString(2);
-    qrnotice.innerHTML = "QR code detectado!";
-    console.log(content.toString(2));
+    window.open(content, '_blank');
   });
   Instascan.Camera.getCameras().then(function (cameras) {
     if (cameras.length > 0) {

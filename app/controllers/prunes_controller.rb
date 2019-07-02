@@ -5,12 +5,12 @@ class PrunesController < ApplicationController
 
   def create
     payload = filter(prune_params)
-    tree = Tree.find_by(register: payload[:register])
-    payload.tree_id = tree.id
-    @prune = Prune.new(payload)
+    tree = Tree.find(incoming_id(payload[:tree]))
+    payload[:tree_id] = tree.id
+    @prune = Prune.new(payload.except!(:tree))
     if @prune.valid? && @prune.save!
       flash[:notice] = 'Póda cadastrada com sucesso!'
-      redirect_to show_tree_path_url(@tree.id)
+      redirect_to show_tree_path_url(tree.id)
     else
       flash[:notice] = 'Erro ao cadastrar póda!'
       redirect_to new_prune_path
@@ -27,7 +27,12 @@ class PrunesController < ApplicationController
     {
       prune_type: prune_params[:prune_type],
       notes: prune_params[:notes],
-      register: prune_params['param'][:register]
+      tree: prune_params['param']
     }
+  end
+
+  def incoming_id(url)
+    id = url[/\d+$/]
+    id.to_i
   end
 end
