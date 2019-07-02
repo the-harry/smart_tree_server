@@ -9,10 +9,10 @@ class PrunesController < ApplicationController
     payload[:tree_id] = tree.id
     @prune = Prune.new(payload.except!(:tree))
     if @prune.valid? && @prune.save!
-      flash[:notice] = 'Póda cadastrada com sucesso!'
+      flash[:notice] = 'poda cadastrada com sucesso!'
       redirect_to show_tree_path_url(tree.id)
     else
-      flash[:notice] = 'Erro ao cadastrar póda!'
+      flash[:notice] = 'Erro ao cadastrar poda!'
       redirect_to new_prune_path
     end
   end

@@ -12,4 +12,10 @@ Rails.application.routes.draw do
   resources :gardens, only: %i[new create]
   resources :trees, only: %i[new create]
   resources :prunes, only: %i[new create]
+
+  namespace 'api', defaults: { format: :json } do
+    namespace 'v1' do
+      post 'metrics(.:format)', to: 'metrics#create'
+    end
+  end
 end

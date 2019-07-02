@@ -1,6 +1,6 @@
 <% javascript_include_tag 'instascan.min.js' %>
 
-<h1>Registrar nova póda.</h1>
+<h1>Registrar nova poda.</h1>
 <h3>Antes de preencher o formulário identifique a árvore</h3>
 <h3>Assim que a árvore for detectada aparecerá uma notificação</h3>
 
@@ -9,7 +9,7 @@
 
 <%= form_with model: @prune, local: true do |f| %>
   <div class="form-group">
-    <%= f.label :prune_type, 'Tipo de póda' %>
+    <%= f.label :prune_type, 'Tipo de poda' %>
     <%= f.text_field :prune_type, class: 'form-control' %>
   </div>
   <div class="form-group">

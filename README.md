@@ -20,7 +20,7 @@ No client serão coletadas métricas de sensores, que após serem filtradas ser�
 
 Dentro desse jardim, é possível criar uma `árvore`, fora os atributos da árvore, como número de registro, nome da espécie, entre outros, temos também a latitude e longitude, a qual jardim pertence, que também gera outro QR code usando essas informaçõoes para idetificar uma árvore de maneira única.
 
-Também é possível cadastrar `pódas` efetuadas em uma árvore, onde se escaneia o QR code da árvore, e preenche um formulário informando o tipo da poda e anotações gerais.
+Também é possível cadastrar `podas` efetuadas em uma árvore, onde se escaneia o QR code da árvore, e preenche um formulário informando o tipo da poda e anotações gerais.
 
 Na tela inicial é mostrado o monitoramento, que é um gráfico do tipo WordMap do `Grafana`, essas informações serão carregados do `Influxdb` do lado do servidor, na qual armazenará apenas métricas filtradas.
 O `Influxdb` é utilizado para armazenar métricas temporais, enquanto o `Postgresql` armazena informações de localização e histórico das árvores.
@@ -43,11 +43,22 @@ As informações cadastrais serão fechadas ao público, porém haverá um endpo
 
 O servidor web estará disponível na porta `80`, e o granafa na porta `3000`
 
+### API
+
+A api conta com um endpoint para recebimento de métricas do worker,
+para enviar métricas, informe o `host`, `latitude` e `longitude` do jardim em questão, e envie o resto
+das informações como chaves adicionais.
+e.g.
+
+`payload = `
+
+`post 'http://localhost/api/v1/metrics', params: payload`
 
 ### TODO
 
-* API - endpoint de métricas
-* API - endpoint de busca de árvores
+* Melhorar métricas de código(cobertura, rubocop, etc...)
 * GRAFANA - Mostrar wordmap na página inicial
-* JOBS - Notificar árvores sem poda
-* JOBS - Notificar árvores com indicadores de más condições
+* API - Implementar autenticação
+* JOB - Notificar árvores sem poda
+* JOB - Notificar árvores com indicadores de más condições
+* JOB - Notificar criação de novo QR code
